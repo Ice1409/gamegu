@@ -8,9 +8,6 @@ const filesToCache = [
   'Build/webbuild.wasm',
   'TemplateData/style.css',
   'TemplateData/favicon.ico',
-  'icon-192.png',
-  'icon-512.png',
-  'manifest.json',
   // อาจมีไฟล์อื่นๆ ที่ต้องการให้โหลด offline
 ];
 
