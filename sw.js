@@ -8,6 +8,19 @@ const filesToCache = [
   'Build/webbuild.wasm',
   'TemplateData/style.css',
   'TemplateData/favicon.ico',
+  'TemplateData/fullscreen-button.png',
+  'TemplateData/MemoryProfiler.png',
+  'TemplateData/progress-bar-empty-dark.png',
+  'TemplateData/progress-bar-empty-light.png',
+  'TemplateData/progress-bar-full-dark.png',
+  'TemplateData/progress-bar-full-light.png',
+  'TemplateData/unity-logo-dark.png',
+  'TemplateData/unity-logo-light.png',
+  'TemplateData/unity-logo-title-footer.png',
+  'TemplateData/webmemd-icon.png',
+  'icon-192.png',
+  'icon-512.png',
+  'manifest.json',
   // อาจมีไฟล์อื่นๆ ที่ต้องการให้โหลด offline
 ];
 
