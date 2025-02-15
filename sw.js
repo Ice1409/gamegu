@@ -8,7 +8,20 @@ const filesToCache = [
   'Build/webbuild.wasm',
   'TemplateData/style.css',
   'TemplateData/favicon.ico',
-  // อาจจะมีไฟล์อื่นๆ ที่ต้องการให้โหลด offline
+  'TemplateData/fullscreen-button.png',
+  'TemplateData/MemoryProfiler.png',
+  'TemplateData/progress-bar-empty-dark.png',
+  'TemplateData/progress-bar-empty-light.png',
+  'TemplateData/progress-bar-full-dark.png',
+  'TemplateData/progress-bar-full-light.png',
+  'TemplateData/unity-logo-dark.png',
+  'TemplateData/unity-logo-light.png',
+  'TemplateData/unity-logo-title-footer.png',
+  'TemplateData/webmemd-icon.png',
+  'icon-192.png',
+  'icon-512.png',
+  'manifest.json',
+  // อาจมีไฟล์อื่นๆ ที่ต้องการให้โหลด offline
 ];
 
 // Install service worker and cache files
@@ -21,12 +34,27 @@ self.addEventListener('install', (event) => {
   );
 });
 
+// Activate service worker and clear old caches
+self.addEventListener('activate', (event) => {
+  const cacheWhitelist = [cacheName];  // Only keep the latest cache
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
 // Fetch request and serve from cache when offline
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        // If we have a cached response, return it. Otherwise, fetch from network
         return response || fetch(event.request);
       })
   );
